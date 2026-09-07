@@ -1,7 +1,7 @@
 # LegalMind AI
 
 > RAG-powered legal Q&A assistant for EU & French law.
-> Production-ready · Modular · Deployed on GCP
+> Modular · Runs entirely on free tools
 
 ## What it does
 Ask questions about EU legislation, French legal texts, and GDPR
@@ -9,15 +9,24 @@ in plain language. LegalMind AI retrieves the relevant legal clauses
 and generates a structured answer with source references.
 
 ## Tech stack
-| Layer       | Tool                              |
-|-------------|-----------------------------------|
-| API         | FastAPI + Cloud Run               |
-| Embeddings  | Vertex AI textembedding-gecko@003 |
-| Vector DB   | ChromaDB (dev) / Vertex AI (prod) |
-| LLM         | Vertex AI Gemini Pro              |
-| Storage     | Google Cloud Storage              |
-| Secrets     | GCP Secret Manager                |
-| Orchestration | LangChain                       |
+Everything below is free — no GCP billing account, no paid API tier.
+
+| Layer         | Tool                                              |
+|---------------|----------------------------------------------------|
+| API           | FastAPI + Uvicorn                                  |
+| Embeddings    | sentence-transformers (`all-MiniLM-L6-v2`), local  |
+| Vector DB     | ChromaDB, local / self-hosted                      |
+| LLM           | Gemini via Google AI Studio free-tier API key       |
+| Storage       | Local filesystem (`./data`)                        |
+| Secrets       | `.env` file (gitignored)                           |
+| Orchestration | LangChain                                          |
+
+Google AI Studio's free tier (`GEMINI_API_KEY` in `.env`) is a different
+product from Vertex AI — it needs only a Google account, no billing setup,
+and no credit card. Get a key at https://aistudio.google.com/apikey.
+
+Cloud deployment (Cloud Run, GCS, Secret Manager) is a possible *later*
+step once the RAG pipeline works, not a requirement to run this project.
 
 ## Run locally
 
@@ -25,7 +34,7 @@ Requires **Python 3.14** (matches the Dockerfile base image).
 
 ### With Docker — recommended, starts API + ChromaDB
 ```bash
-cp .env.example .env        # fill in GEMINI_API_KEY and GCP_PROJECT_ID
+cp .env.example .env        # fill in GEMINI_API_KEY (free — see Tech stack above)
 docker compose up --build
 curl http://localhost:8080/health
 ```
@@ -49,4 +58,4 @@ See the /services folder — one service per RAG stage.
 - [x] Phase 1: Environment setup
 - [ ] Phase 2: Data ingestion
 - [ ] Phase 3: RAG pipeline
-- [ ] Phase 4: Deploy to GCP
+- [ ] Phase 4: Deploy (optional, later — free tiers exist for Cloud Run)
