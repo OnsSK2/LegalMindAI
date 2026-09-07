@@ -1,0 +1,14 @@
+services:
+  api:
+    build: .
+    ports: ["8080:8080"]
+    env_file: .env
+    volumes:
+      - ./data:/app/data
+    depends_on: [chroma]
+
+  chroma:
+    image: chromadb/chroma:latest
+    ports: ["8000:8000"]
+    volumes:
+      - ./data/vector_store:/chroma/chroma

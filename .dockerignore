@@ -1,0 +1,40 @@
+# Keep secrets out of image layers. docker-compose supplies these at runtime
+# via env_file, so the image never needs a copy baked in.
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+service-account*.json
+gcp-credentials*.json
+
+# Host virtualenv — Windows binaries, useless and large inside a linux image
+.venv/
+venv/
+env/
+
+# Git history
+.git/
+.gitignore
+
+# Python caches
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Rebuildable / runtime data — compose bind-mounts ./data instead
+data/vector_store/
+data/processed/
+logs/
+*.log
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

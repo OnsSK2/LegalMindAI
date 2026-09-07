@@ -1,0 +1,58 @@
+# --- Secrets -----------------------------------------------------------
+# Never commit real credentials. Template lives in .env.example
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+# GCP service-account keys
+service-account*.json
+gcp-credentials*.json
+
+# --- Python ------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# --- Virtual environments ----------------------------------------------
+.venv/
+venv/
+env/
+ENV/
+
+# --- Tooling caches ----------------------------------------------------
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+.tox/
+
+# --- Project data ------------------------------------------------------
+# Vector store is rebuildable from data/raw — keep it out of git
+data/vector_store/
+data/processed/
+# Keep the folders themselves so the layout survives a clone
+!data/vector_store/.gitkeep
+!data/processed/.gitkeep
+
+# Ingested source PDFs can be large; uncomment if you keep them out of git
+# data/raw/
+
+# --- Logs --------------------------------------------------------------
+logs/
+*.log
+
+# --- Editors / OS ------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
