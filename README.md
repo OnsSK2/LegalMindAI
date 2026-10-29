@@ -8,13 +8,16 @@ Ask questions about EU legislation, French legal texts, and GDPR
 in plain language. LegalMind AI retrieves the relevant legal clauses
 and generates a structured answer with source references.
 
+During ingestion, LegalMind AI detects the language of each text chunk,
+preserves multilingual content, and uses multilingual embeddings for retrieval.
+
 ## Tech stack
 Everything below is free — no GCP billing account, no paid API tier.
 
 | Layer         | Tool                                              |
 |---------------|----------------------------------------------------|
 | API           | FastAPI + Uvicorn                                  |
-| Embeddings    | sentence-transformers (`all-MiniLM-L6-v2`), local  |
+| Embeddings    | sentence-transformers (`paraphrase-multilingual-MiniLM-L12-v2`), local |
 | Vector DB     | ChromaDB, local / self-hosted                      |
 | LLM           | Gemini via Google AI Studio free-tier API key       |
 | Storage       | Local filesystem (`./data`)                        |

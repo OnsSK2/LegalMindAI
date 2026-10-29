@@ -1,0 +1,31 @@
+[
+  {
+    "file":         "gdpr.pdf",
+    "source":       "GDPR",
+    "full_name":    "General Data Protection Regulation 2016/679",
+    "jurisdiction": "EU",
+    "domain":       "data_protection",
+    "year":         2016,
+    "access_roles": ["admin", "lawyer", "client"]
+  },
+  {
+    "file":         "code_civil.pdf",
+    "source":       "FrenchCivilCode",
+    "full_name":    "Code Civil Français",
+    "jurisdiction": "France",
+    "domain":       "civil_law",
+    "year":         1804,
+    "access_roles": ["admin", "lawyer"]
+  },
+  {
+    "file":         "text_en.pdf",
+    "source":       "EU_Charter",
+    "full_name":    "Charter of Fundamental Rights of the European Union",
+    "jurisdiction": "EU",
+    "domain":       "fundamental_rights",
+    "year":         2000,
+    "language":     "auto",
+    "page_layout":  "official_journal",
+    "access_roles": ["admin", "lawyer", "client"]
+  }
+]
