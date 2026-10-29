@@ -59,6 +59,6 @@ See the /services folder — one service per RAG stage.
 
 ## Status
 - [x] Phase 1: Environment setup
-- [ ] Phase 2: Data ingestion
+- [x] Phase 2: Data ingestion
 - [ ] Phase 3: RAG pipeline
 - [ ] Phase 4: Deploy (optional, later — free tiers exist for Cloud Run)
